@@ -4,5 +4,5 @@ import App from './App'
 import TestComponent from './components/TestComponent'
 
 createApp(App).mount('#app')
-createApp(TestComponent).mount('#TestComponent')
+//createApp(TestComponent).mount('#TestComponent')
 

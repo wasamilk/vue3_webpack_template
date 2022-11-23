@@ -1,26 +1,37 @@
 <template>
+
   <h1
     v-once
     @click="increase">
     {{ count }}(v-once)
   </h1>
-  <h1 v-html="msg">
+  <h1
+      @click="increase">
+    {{ count }}(v-bind)
   </h1>
-  <h1 :id="bindMsg">
-    bindMsg
-  </h1>
-
-  <div v-if="count >= 4">
+  <div v-if="isCountOverFour">
     4 이상
   </div>
+  <hr/>
+
+  <h1 v-html="msg">
+  </h1>
+  <h1>
+    {{ msg }}
+  </h1>
+  <hr/>
+
   <ul>
     <Fruit
       v-for="fruit in fruits"
       :key="fruit"
-      :name="fruit">
-      {{ fruit }}
-    </Fruit>
+      :name="fruit"
+      :class="testBind"/>
   </ul>
+  <hr/>
+
+  <p>{{ testTxt }}</p>
+  <p>{{ reversedTxt }}</p>
 </template>
 
 <script>
@@ -32,15 +43,25 @@ export default{
   data(){
     return {
       count: 2,
-      fruits:['Apple', 'banana', 'grape'],
+      fruits:['Apple', 'Banana', 'Cherry'],
       msg: `<div style="color:red;">v-html</div>`,
-      bindMsg : 'v-bind'
+      bindMsg : 'v-bind',
+      testBind : 'testClass',
+      testTxt: 'Hello world'
     }
   },
   methods: {
     //increase: function(){
     increase(){
       this.count += 1;
+    }
+  },
+  computed: {
+    isCountOverFour(){
+      return this.count >= 4
+    },
+    reversedTxt(){
+      return this.testTxt.split('').reverse().join('')
     }
   }
 }
@@ -59,5 +80,9 @@ export default{
     li {
       font-size: 30px;
     }
+  }
+
+  .testClass {
+    color:blueviolet;
   }
 </style>

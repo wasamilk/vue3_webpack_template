@@ -1,6 +1,6 @@
 <template>
   <li>
-    {{ name }}
+    (Fruit) : {{ name }}
   </li>
 </template>
 
@@ -11,19 +11,6 @@ export default {
       type:String,
       default:'default test'
     }
-  },
-  beforeCreate() {
-    console.log("beforeCreate")
-  },
-  created() {
-    console.log("created")
-  },
-  mounted(){
-    this.count += 1;
-    console.log("onMounted")
-  },
-  updated() {
-    console.log("updated")
   }
 }
 </script>
