@@ -1,34 +1,33 @@
 <template>
-
   <h1
     v-once
     @click="increase">
     {{ count }}(v-once)
   </h1>
   <h1
-      @click="increase">
+    @click="increase">
     {{ count }}(v-bind)
   </h1>
   <div v-if="isCountOverFour">
     4 이상
   </div>
-  <hr/>
+  <hr />
 
   <h1 v-html="msg">
   </h1>
   <h1>
     {{ msg }}
   </h1>
-  <hr/>
+  <hr />
 
   <ul>
     <Fruit
       v-for="fruit in fruits"
       :key="fruit"
       :name="fruit"
-      :class="testBind"/>
+      :class="testBind" />
   </ul>
-  <hr/>
+  <hr />
 
   <p>{{ testTxt }}</p>
   <p>{{ reversedTxt }}</p>
