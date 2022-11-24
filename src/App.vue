@@ -1,36 +1,9 @@
 <template>
-  <h1
-    v-once
-    @click="increase">
-    {{ count }}(v-once)
-  </h1>
-  <h1
-    @click="increase">
-    {{ count }}(v-bind)
-  </h1>
-  <div v-if="isCountOverFour">
-    4 이상
-  </div>
-  <hr />
-
-  <h1 v-html="msg">
-  </h1>
-  <h1>
-    {{ msg }}
-  </h1>
-  <hr />
-
-  <ul>
-    <Fruit
-      v-for="fruit in fruits"
-      :key="fruit"
-      :name="fruit"
-      :class="testBind" />
-  </ul>
-  <hr />
-
-  <p>{{ testTxt }}</p>
-  <p>{{ reversedTxt }}</p>
+  <button @click="clickeActive">Active</button>
+  <button @click="clickeError">Error</button>
+  <button @click="clickeReset">Reset</button>
+  <h1 :class="{active:isActive, error:hasError}">Test text</h1>
+  
 </template>
 
 <script>
@@ -41,47 +14,31 @@ export default{
   },
   data(){
     return {
-      count: 2,
-      fruits:['Apple', 'Banana', 'Cherry'],
-      msg: `<div style="color:red;">v-html</div>`,
-      bindMsg : 'v-bind',
-      testBind : 'testClass',
-      testTxt: 'Hello world'
+      isActive:false,
+      hasError: false
     }
   },
   methods: {
-    //increase: function(){
-    increase(){
-      this.count += 1;
-    }
-  },
-  computed: {
-    isCountOverFour(){
-      return this.count >= 4
+    clickeActive(){
+      this.isActive = true;
     },
-    reversedTxt(){
-      return this.testTxt.split('').reverse().join('')
+    clickeError(){
+      this.hasError = true;
+    },
+    clickeReset(){
+      this.isActive = false;
+      this.hasError = false;
     }
   }
 }
 </script>
 
 <style lang="scss">
-  h1 {
-    font-size: 30px;
-    color: blue;
-  }
-  #v-bind {
-    color:greenyellow;
+  .active {
+    font-weight: bold;
   }
 
-  ul {
-    li {
-      font-size: 30px;
-    }
-  }
-
-  .testClass {
-    color:blueviolet;
+  .error {
+    color:red;
   }
 </style>
