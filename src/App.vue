@@ -87,7 +87,8 @@ export default{
       this.sortingFruits = this.inputTxtToUpper;
     },
     btnTest(e) {
-      const btnType = e.target.innerText;
+      //const btnType = e.target.innerText;   // innerText는 CSS에 의해 비표시되는 요소 노드의 텍스트는 반환X
+      const btnType = e.target.textContent;   // 속도또한 textContent보다 느림
       const btnClass = e.target.className;
       this.fruitsObj = this.fruitsObj.map(fruit => {
         // console.log(fruit)
