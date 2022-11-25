@@ -92,9 +92,9 @@ export default{
       this.fruitsObj = this.fruitsObj.map(fruit => {
         // console.log(fruit)
         if (fruit.name === btnClass) {
-          if(btnType == '+'){
+          if(btnType === '+'){
             fruit.cnt += 1
-          }else if(fruit.cnt == 1){
+          }else if(fruit.cnt === 1){
             //remove
           }else {
             fruit.cnt -= 1
